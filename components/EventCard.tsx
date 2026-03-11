@@ -61,7 +61,7 @@ export default function EventCard({ event }: { event: Event }) {
               src={event.image_url}
               alt={event.title}
               className="transition-transform duration-500 group-hover:scale-105 group-active:scale-105"
-              style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.95 }}
+              style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "center", opacity: 0.95 }}
             />
 
           {/* İTÜ Tarzı Hover İç Border Efekti */}
