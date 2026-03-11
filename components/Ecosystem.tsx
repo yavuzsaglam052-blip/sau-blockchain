@@ -53,7 +53,7 @@ const focusAreas = [
 
 export default function Ecosystem() {
   return (
-    <section id="ecosystem" className="py-16 md:py-24 px-6">
+    <section id="ecosystem" style={{ padding: "96px 24px" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", width: "100%" }}>
 
         {/* Section header */}
@@ -98,7 +98,11 @@ export default function Ecosystem() {
         </div>
 
         {/* 3-column card grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: "24px",
+        }}>
           {focusAreas.map((area) => (
             <div
               key={area.title}

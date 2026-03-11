@@ -20,7 +20,7 @@ export default async function Events() {
   const past     = events.filter((e) => e.status === "past");
 
   return (
-    <section id="events" className="py-16 md:py-24 px-6 max-w-[1100px] mx-auto">
+    <section id="events" style={{ padding: "80px 24px", maxWidth: "1100px", margin: "0 auto" }}>
       {/* Başlık */}
       <div style={{ textAlign: "center", marginBottom: "64px" }}>
         <div style={{
@@ -71,7 +71,11 @@ function EventGroup({ title, events, empty }: { title: string; events: Event[]; 
       {events.length === 0 ? (
         <p style={{ color: "#475569", textAlign: "center", padding: "32px 0" }}>{empty}</p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+          gap: "24px",
+        }}>
           {events.map((ev) => <EventCard key={ev.id} event={ev} />)}
         </div>
       )}
