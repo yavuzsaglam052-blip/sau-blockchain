@@ -9,23 +9,58 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "SAÜ Blockchain Topluluğu | Sakarya Üniversitesi",
+  metadataBase: new URL("https://sau-blockchain.vercel.app"), // Kendi vercel domainini ya da asıl domaini yaz
+  title: {
+    default: "SAÜ Blockchain Topluluğu | Sakarya Üniversitesi Web3 Merkezi",
+    template: "%s | SAÜ Blockchain",
+  },
   description:
-    "Sakarya Üniversitesi Blockchain Topluluğu — Blockchain, Web3, Akıllı Sözleşmeler ve Merkeziyetsiz Teknolojiler alanında eğitim ve proje geliştirme topluluğu.",
+    "Sakarya Üniversitesi (SAÜ) Blockchain Topluluğu. Web3, kripto, akıllı sözleşmeler ve merkeziyetsiz teknolojiler alanında proje, eğitim ve gelişim merkezi.",
   keywords: [
     "SAÜ Blockchain",
-    "Sakarya Üniversitesi",
+    "SAÜ Blockchain Topluluğu",
+    "Sakarya Üniversitesi Blockchain",
+    "Sakarya Blockchain",
+    "SAÜ Web3",
+    "Sakarya Kripto",
+    "Sau block",
     "Blockchain",
     "Web3",
     "Solana",
     "Akıllı Sözleşme",
-    "Kripto",
+    "Kripto Para",
+    "Yazılım",
   ],
+  authors: [{ name: "SAÜ Blockchain" }],
+  creator: "SAÜ Blockchain",
   openGraph: {
-    title: "SAÜ Blockchain Topluluğu",
+    title: "SAÜ Blockchain Topluluğu | Sakarya Üniversitesi",
     description:
-      "Sakarya Üniversitesi Blockchain Topluluğu — Geleceğin teknolojilerini birlikte inşa ediyoruz.",
+      "Sakarya Üniversitesi Blockchain Topluluğu — Geleceğin teknolojilerini (Web3, Kripto, Smart Contract) birlikte inşa ediyoruz.",
+    url: "https://sau-blockchain.vercel.app",
+    siteName: "SAÜ Blockchain Topluluğu",
+    locale: "tr_TR",
     type: "website",
+    /* Sitenin logusunu veya havalı bir kapağını OG image olarak ekleyebilirsin
+    images: [
+      {
+        url: "/logo.png", // public klasöründeki bir resim
+        width: 800,
+        height: 600,
+      },
+    ],
+    */
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
