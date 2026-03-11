@@ -73,9 +73,18 @@ const techCards = [
 
 export default function About() {
   return (
-    <section id="about" style={{ padding: "96px 24px" }}>
+    <section id="about" className="about-section" style={{ padding: "96px 24px" }}>
       {/* Max-width centered container */}
       <div style={{ maxWidth: "1200px", margin: "0 auto", width: "100%" }}>
+        <style dangerouslySetInnerHTML={{__html: `
+          .about-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 64px; align-items: center; }
+          .tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+          @media (max-width: 900px) {
+            .about-section { padding: 48px 16px !important; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .tech-grid { grid-template-columns: 1fr; }
+          }
+        `}} />
 
         {/* Section label */}
         <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
@@ -86,12 +95,7 @@ export default function About() {
         </div>
 
         {/* 2-column grid */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "64px",
-          alignItems: "center",
-        }}>
+        <div className="about-grid">
 
           {/* LEFT: Text content */}
           <div>
@@ -183,7 +187,7 @@ export default function About() {
               </div>
 
               {/* 2×2 grid */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+              <div className="tech-grid">
                 {techCards.map((card) => (
                   <div
                     key={card.title}

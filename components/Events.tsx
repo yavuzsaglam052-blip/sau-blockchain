@@ -20,7 +20,7 @@ export default async function Events() {
   const past     = events.filter((e) => e.status === "past");
 
   return (
-    <section id="events" style={{ padding: "80px 24px", maxWidth: "1100px", margin: "0 auto" }}>
+    <section id="events" className="events-section">
       {/* Başlık */}
       <div style={{ textAlign: "center", marginBottom: "64px" }}>
         <div style={{
@@ -60,6 +60,30 @@ export default async function Events() {
 function EventGroup({ title, events, empty }: { title: string; events: Event[]; empty: string }) {
   return (
     <div style={{ marginBottom: "56px" }}>
+      <style dangerouslySetInnerHTML={{__html: `
+        .events-section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+        .events-carousel {
+          display: flex;
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          -webkit-overflow-scrolling: touch;
+          padding-bottom: 24px;
+          gap: 24px;
+        }
+        .events-carousel::-webkit-scrollbar { height: 8px; }
+        .events-carousel::-webkit-scrollbar-track { background: rgba(15,23,42,0.5); border-radius: 999px; }
+        .events-carousel::-webkit-scrollbar-thumb { background: rgba(99,102,241,0.5); border-radius: 999px; }
+        .events-carousel::-webkit-scrollbar-thumb:hover { background: rgba(99,102,241,0.8); }
+        .event-slide {
+          min-width: 320px;
+          flex-shrink: 0;
+          scroll-snap-align: start;
+        }
+        @media (max-width: 800px) {
+          .events-section { padding: 40px 16px; }
+          .event-slide { min-width: 85vw; }
+        }
+      `}} />
       <h3 style={{
         fontSize: "1.25rem", fontWeight: 700, color: "#e2e8f0",
         marginBottom: "28px", paddingBottom: "12px",
@@ -71,12 +95,12 @@ function EventGroup({ title, events, empty }: { title: string; events: Event[]; 
       {events.length === 0 ? (
         <p style={{ color: "#475569", textAlign: "center", padding: "32px 0" }}>{empty}</p>
       ) : (
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-          gap: "24px",
-        }}>
-          {events.map((ev) => <EventCard key={ev.id} event={ev} />)}
+        <div className="events-carousel">
+          {events.map((ev) => (
+            <div key={ev.id} className="event-slide">
+              <EventCard event={ev} />
+            </div>
+          ))}
         </div>
       )}
     </div>

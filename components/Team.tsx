@@ -129,8 +129,18 @@ const connV = (
 
 export default function Team() {
   return (
-    <section id="team" style={{ padding: "96px 24px" }}>
+    <section id="team" className="team-section">
       <div style={{ maxWidth: "980px", margin: "0 auto", width: "100%" }}>
+        <style dangerouslySetInnerHTML={{__html: `
+          .team-section { padding: 96px 24px; }
+          .team-l2-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 600px; margin: 0 auto; }
+          .team-branch { display: block; position: relative; max-width: 600px; margin: 0 auto; }
+          @media (max-width: 900px) {
+            .team-section { padding: 48px 16px; }
+            .team-l2-grid { grid-template-columns: 1fr; gap: 48px; }
+            .team-branch { display: none; }
+          }
+        `}} />
 
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "64px" }}>
@@ -165,13 +175,13 @@ export default function Team() {
         {connV}
 
         {/* Horizontal branch from L1 to two VPs */}
-        <div style={{ position: "relative", maxWidth: "600px", margin: "0 auto" }}>
+        <div className="team-branch">
           <div style={{ height: "1px", background: "rgba(99,102,241,0.3)" }} />
           <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", width: "8px", height: "8px", borderRadius: "50%", background: "#6366f1" }} />
         </div>
 
         {/* ─── LEVEL 2: İki VP ─── */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px", maxWidth: "600px", margin: "0 auto" }}>
+        <div className="team-l2-grid">
           {/* Sol: Kurumsal İlişkiler VP */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             {connV}
@@ -197,7 +207,7 @@ export default function Team() {
         </div>
 
         {/* ─── LEVEL 3: İki departman yan yana ─── */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "32px", maxWidth: "600px", margin: "0 auto" }}>
+        <div className="team-l2-grid">
 
           {/* SOL: Kurumsal İlişkiler Departmanı (4 üye) */}
           <div>
