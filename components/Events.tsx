@@ -1,5 +1,7 @@
 import { supabase, Event } from "@/utils/supabase";
 
+export const revalidate = 0; // Next.js önbelleğini devre dışı bırak, her istekte canlı veriyi getir
+
 /* ─── küçük yardımcılar ─── */
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString("tr-TR", {

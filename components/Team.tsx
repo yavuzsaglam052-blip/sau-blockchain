@@ -27,9 +27,10 @@ function Avatar({ name, size = "md" }: { name: string; size?: "sm" | "md" | "lg"
 }
 
 function MemberCard({
-  name, role, sub, isLead = false, size = "md",
+  name, role, sub, isLead = false, size = "md", avatarUrl, linkedinUrl
 }: {
   name: string; role: string; sub?: string; isLead?: boolean; size?: "sm" | "md" | "lg";
+  avatarUrl?: string; linkedinUrl?: string;
 }) {
   return (
     <div
@@ -64,7 +65,22 @@ function MemberCard({
           background: "linear-gradient(135deg, #6366f1, #a78bfa)",
         }}>Başkan</div>
       )}
-      <Avatar name={name} size={size} />
+      
+      {/* ── Avatar veya Resim ── */}
+      {avatarUrl ? (
+        <div style={{
+          width: size === "lg" ? 80 : size === "sm" ? 44 : 56,
+          height: size === "lg" ? 80 : size === "sm" ? 44 : 56,
+          borderRadius: "50%", overflow: "hidden", flexShrink: 0,
+          border: "2px solid rgba(255,255,255,0.1)",
+        }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={avatarUrl} alt={name} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        </div>
+      ) : (
+        <Avatar name={name} size={size} />
+      )}
+      {/* ── İsim ve Rol ── */}
       <div>
         <div style={{ fontWeight: 700, color: "white", fontSize: size === "lg" ? "17px" : size === "sm" ? "12px" : "13px", marginBottom: "3px" }}>{name}</div>
         <div style={{
@@ -74,15 +90,19 @@ function MemberCard({
         }}>{role}</div>
         {sub && <div style={{ color: "#475569", fontSize: "9px", marginTop: "2px" }}>{sub}</div>}
       </div>
-      <a href="#" onClick={(e) => e.preventDefault()} aria-label={`${name} LinkedIn`}
-        style={{
-          display: "inline-flex", alignItems: "center", gap: "5px", padding: "4px 10px",
-          borderRadius: "7px", fontSize: "10px", fontWeight: 500, color: "#64748b",
-          textDecoration: "none", transition: "all 0.2s",
-        }}
-        onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#0A66C2"; (e.currentTarget as HTMLAnchorElement).style.background = "rgba(10,102,194,0.1)"; }}
-        onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#64748b"; (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}
-      ><LinkedInIcon />LinkedIn</a>
+
+      {/* ── LinkedIn Linki ── */}
+      {linkedinUrl && (
+        <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" aria-label={`${name} LinkedIn`}
+          style={{
+            display: "inline-flex", alignItems: "center", gap: "5px", padding: "4px 10px",
+            borderRadius: "7px", fontSize: "10px", fontWeight: 500, color: "#64748b",
+            textDecoration: "none", transition: "all 0.2s",
+          }}
+          onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#0A66C2"; (e.currentTarget as HTMLAnchorElement).style.background = "rgba(10,102,194,0.1)"; }}
+          onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = "#64748b"; (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; }}
+        ><LinkedInIcon />LinkedIn</a>
+      )}
     </div>
   );
 }
@@ -131,7 +151,14 @@ export default function Team() {
         {/* ─── LEVEL 1: Başkan ─── */}
         <div style={{ display: "flex", justifyContent: "center" }}>
           <div style={{ width: "260px" }}>
-            <MemberCard name="Agah" role="Yönetim Kurulu Başkanı" isLead size="lg" />
+            <MemberCard 
+              name="Agah" 
+              role="Yönetim Kurulu Başkanı" 
+              isLead 
+              size="lg" 
+              // linkedinUrl="https://linkedin.com/in/agah..." 
+              // avatarUrl="/images/agah.jpg" 
+            />
           </div>
         </div>
 
@@ -148,12 +175,24 @@ export default function Team() {
           {/* Sol: Kurumsal İlişkiler VP */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             {connV}
-            <MemberCard name="Arkın" role="Başkan Yardımcısı" sub="Kurumsal İlişkilerden Sorumlu" />
+            <MemberCard 
+              name="Arkın" 
+              role="Başkan Yardımcısı" 
+              sub="Kurumsal İlişkilerden Sorumlu" 
+              // linkedinUrl="https://linkedin.com/..." 
+              // avatarUrl="/images/arkin.jpg"
+            />
           </div>
           {/* Sağ: Sosyal Medya VP */}
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             {connV}
-            <MemberCard name="Özgür" role="Başkan Yardımcısı" sub="Sosyal Medyadan Sorumlu" />
+            <MemberCard 
+              name="Özgür" 
+              role="Başkan Yardımcısı" 
+              sub="Sosyal Medyadan Sorumlu" 
+              // linkedinUrl="https://linkedin.com/..."
+              // avatarUrl="/images/ozgur.jpg"
+            />
           </div>
         </div>
 
@@ -168,8 +207,21 @@ export default function Team() {
             <div style={{ marginTop: "8px" }}>
               <DeptLabel label="Kurumsal İlişkiler" color="#6366f1" />
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
-                {["Meriç", "Yavuz Sağlam", "Abdurrahman", "Elif"].map((name) => (
-                  <MemberCard key={name} name={name} role="Üye" sub="Kurumsal İlişkiler" size="sm" />
+                {[
+                  { name: "Meriç", sub: "Kurumsal İlişkiler", linkedinUrl: undefined, avatarUrl: undefined },
+                  { name: "Yavuz Sağlam", sub: "Kurumsal İlişkiler", linkedinUrl: undefined, avatarUrl: undefined },
+                  { name: "Abdurrahman", sub: "Kurumsal İlişkiler", linkedinUrl: undefined, avatarUrl: undefined },
+                  { name: "Elif", sub: "Kurumsal İlişkiler", linkedinUrl: undefined, avatarUrl: undefined }
+                ].map((person) => (
+                  <MemberCard 
+                    key={person.name} 
+                    name={person.name} 
+                    role="Üye" 
+                    sub={person.sub} 
+                    size="sm" 
+                    linkedinUrl={person.linkedinUrl}
+                    avatarUrl={person.avatarUrl}
+                  />
                 ))}
               </div>
             </div>
@@ -182,8 +234,19 @@ export default function Team() {
             <div style={{ marginTop: "8px" }}>
               <DeptLabel label="Sosyal Medya" color="#f472b6" />
               <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-                {["Evra", "Ahmet"].map((name) => (
-                  <MemberCard key={name} name={name} role="Üye" sub="Sosyal Medya" size="sm" />
+                {[
+                  { name: "Evra", sub: "Sosyal Medya", linkedinUrl: undefined, avatarUrl: undefined },
+                  { name: "Ahmet", sub: "Sosyal Medya", linkedinUrl: undefined, avatarUrl: undefined }
+                ].map((person) => (
+                  <MemberCard 
+                    key={person.name} 
+                    name={person.name} 
+                    role="Üye" 
+                    sub={person.sub} 
+                    size="sm" 
+                    linkedinUrl={person.linkedinUrl}
+                    avatarUrl={person.avatarUrl}
+                  />
                 ))}
               </div>
             </div>
