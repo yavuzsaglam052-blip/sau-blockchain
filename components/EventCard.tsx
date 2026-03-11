@@ -80,7 +80,7 @@ export default function EventCard({ event }: { event: Event }) {
         <div style={{
           display: "flex", alignItems: "center", justifyContent: "center",
           background: "linear-gradient(135deg,rgba(99,102,241,0.08),rgba(167,139,250,0.05))",
-          fontSize: "2.5rem", aspectRatio: "16/9"
+          fontSize: "2.5rem", aspectRatio: "4/3"
         }}>
           {event.type === "Workshop" ? "🔧" : event.type === "Hackathon" ? "⚡" : "📖"}
         </div>
@@ -157,7 +157,7 @@ export default function EventCard({ event }: { event: Event }) {
               overflow: hidden;
               background: #0f172a;
               width: 100%;
-              aspect-ratio: 16 / 9; /* Tamamen İTÜ standartı dikey kilit! */
+              aspect-ratio: 4 / 3; /* Daha derli toplu karemsi görünüm */
             }
             .event-img-container img {
               width: 100%;

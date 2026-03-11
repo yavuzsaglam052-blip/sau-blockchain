@@ -36,7 +36,7 @@ export default function AddEventForm({ addEventAction }: { addEventAction: (form
 
   function onImageLoad(e: React.SyntheticEvent<HTMLImageElement>) {
     const { width, height } = e.currentTarget;
-    setCrop(centerAspectCrop(width, height, 16 / 9));
+    setCrop(centerAspectCrop(width, height, 4 / 3));
   }
 
   async function generateCroppedImage() {
@@ -120,7 +120,7 @@ export default function AddEventForm({ addEventAction }: { addEventAction: (form
           <textarea id="description" name="description" rows={3} required placeholder="Kısa bir açıklama…" style={{ ...inputStyle, resize: "vertical" }} />
         </FieldGroup>
 
-        <FieldGroup label="Fotoğraf Seç & Kırp (Admin Özel - 16:9)" htmlFor="image_file_dummy">
+        <FieldGroup label="Fotoğraf Seç & Kırp (Admin Özel - 4:3)" htmlFor="image_file_dummy">
             <input 
                 id="image_file_dummy" 
                 type="file" 
@@ -135,7 +135,7 @@ export default function AddEventForm({ addEventAction }: { addEventAction: (form
                 <div style={{ marginTop: "12px", border: "1px dashed #6366f1", padding: "8px", borderRadius: "12px" }}>
                     <p style={{ fontSize: "12px", color: "#a5b4fc", marginBottom: "8px", fontWeight: 600 }}>✂️ Kırpılmış Önizleme (Bu haliyle yüklenecek):</p>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={finalBase64} alt="Cropped" style={{ width: "100%", borderRadius: "8px", aspectRatio: "16/9", objectFit: "cover" }} />
+                    <img src={finalBase64} alt="Cropped" style={{ width: "100%", borderRadius: "8px", aspectRatio: "4/3", objectFit: "cover" }} />
                     <button 
                         type="button"
                         onClick={() => { setFinalBase64(""); setImgSrc(""); }}
@@ -183,14 +183,14 @@ export default function AddEventForm({ addEventAction }: { addEventAction: (form
             background: "rgba(9, 14, 26, 0.95)", backdropFilter: "blur(12px)",
             display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "20px"
         }}>
-            <h3 style={{ color: "white", marginBottom: "20px", fontSize: "1.5rem", fontWeight: 700 }}>Resmi Kırp (16:9)</h3>
+            <h3 style={{ color: "white", marginBottom: "20px", fontSize: "1.5rem", fontWeight: 700 }}>Resmi Kırp (4:3)</h3>
             
             <div style={{ maxWidth: "90vw", maxHeight: "70vh", overflow: "auto", border: "2px solid rgba(99,102,241,0.5)", borderRadius: "12px", background: "#000" }}>
                 <ReactCrop
                     crop={crop}
                     onChange={(_, percentCrop) => setCrop(percentCrop)}
                     onComplete={(c) => setCompletedCrop(c)}
-                    aspect={16 / 9}
+                    aspect={4 / 3}
                 >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
