@@ -59,7 +59,7 @@ export default function EventCard({ event }: { event: Event }) {
             src={event.image_url}
             alt={event.title}
             className="transition-transform duration-500 group-hover:scale-105 group-active:scale-105"
-            style={{ width: "100%", height: "100%", objectFit: "contain", backgroundColor: "rgba(15,23,42,0.6)", objectPosition: "center", opacity: 0.95 }}
+            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", opacity: 0.95 }}
           />
 
           {/* İTÜ Tarzı Hover İç Border Efekti */}
@@ -78,9 +78,9 @@ export default function EventCard({ event }: { event: Event }) {
       )}
       {!event.image_url && (
         <div style={{
-          height: "120px", display: "flex", alignItems: "center", justifyContent: "center",
+          display: "flex", alignItems: "center", justifyContent: "center",
           background: "linear-gradient(135deg,rgba(99,102,241,0.08),rgba(167,139,250,0.05))",
-          fontSize: "2.5rem",
+          fontSize: "2.5rem", aspectRatio: "16 / 9"
         }}>
           {event.type === "Workshop" ? "🔧" : event.type === "Hackathon" ? "⚡" : "📖"}
         </div>
@@ -157,7 +157,7 @@ export default function EventCard({ event }: { event: Event }) {
               overflow: hidden;
               background: #0f172a;
               width: 100%;
-              height: 220px;
+              aspect-ratio: 16 / 9;
             }
           `}} />
         </div>
