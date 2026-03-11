@@ -52,19 +52,23 @@ export default function EventCard({ event }: { event: Event }) {
       {event.image_url && (
         <div 
           className="group cursor-pointer" 
-          style={{ height: "200px", overflow: "hidden", background: "#0f172a", position: "relative" }}
+          style={{ position: "relative", overflow: "hidden", background: "#0f172a" }}
           onClick={() => setIsModalOpen(true)}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={event.image_url}
             alt={event.title}
-            className="transition-transform duration-500 group-hover:scale-110 group-active:scale-110"
-            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.85 }}
+            className="transition-transform duration-500 group-hover:scale-105 group-active:scale-105 event-img-h"
+            style={{ width: "100%", objectFit: "contain", backgroundColor: "rgba(15,23,42,0.6)", objectPosition: "center", opacity: 0.95 }}
           />
+
+          {/* İTÜ Tarzı Hover İç Border Efekti */}
+          <div className="hidden md:block absolute inset-0 border-2 border-transparent group-hover:border-[#6366f1]/50 transition-colors duration-300 pointer-events-none z-10"></div>
+          
           <div style={{
             position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
-            background: "rgba(15,23,42,0.4)", opacity: 0, transition: "opacity 0.3s",
+            background: "rgba(15,23,42,0.4)", opacity: 0, transition: "opacity 0.3s", zIndex: 20
           }} className="group-hover:opacity-100">
              <span style={{
                background: "rgba(255,255,255,0.2)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)",
@@ -149,6 +153,10 @@ export default function EventCard({ event }: { event: Event }) {
           </div>
           <style dangerouslySetInnerHTML={{__html: `
             @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+            .event-img-h { height: 260px; }
+            @media (max-width: 768px) {
+              .event-img-h { height: 220px; }
+            }
           `}} />
         </div>
       )}
