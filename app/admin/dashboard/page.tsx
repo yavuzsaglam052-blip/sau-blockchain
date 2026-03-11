@@ -5,7 +5,7 @@ import { supabase, Event } from "@/utils/supabase";
 export const revalidate = 0; // Her girişte verileri tazele
 
 export default async function AdminDashboard() {
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from("events")
     .select("*")
     .order("event_date", { ascending: false });
@@ -108,8 +108,8 @@ export default async function AdminDashboard() {
               <textarea id="description" name="description" rows={3} required placeholder="Kısa bir açıklama…" style={{ ...inputStyle, resize: "vertical" }} />
             </FieldGroup>
 
-            <FieldGroup label="Fotoğraf URL'si (isteğe bağlı)" htmlFor="image_url">
-              <input id="image_url" name="image_url" type="url" placeholder="https://…" style={inputStyle} />
+            <FieldGroup label="Fotoğraf Yükle (Dosya Seç / İsteğe Bağlı)" htmlFor="image_file">
+              <input id="image_file" name="image_file" type="file" accept="image/*" style={inputStyle} />
             </FieldGroup>
 
             <FieldGroup label="Durum" htmlFor="status">

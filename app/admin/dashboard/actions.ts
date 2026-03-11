@@ -7,12 +7,35 @@ export async function addEvent(formData: FormData) {
   const event_date  = formData.get("event_date")  as string;
   const type        = formData.get("type")        as string;
   const description = formData.get("description") as string;
-  const image_url   = (formData.get("image_url")  as string) || null;
   const status      = formData.get("status")      as "upcoming" | "past";
+  
+  // Resim dosyası işlemleri
+  const imageFile = formData.get("image_file") as File | null;
+  let finalImageUrl = null;
+
+  if (imageFile && imageFile.size > 0 && imageFile.name !== "undefined") {
+    const fileExt = imageFile.name.split(".").pop();
+    const fileName = `${Math.random()}.${fileExt}`;
+    const filePath = `${fileName}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from("event-images")
+      .upload(filePath, imageFile);
+
+    if (uploadError) {
+      throw new Error(`Resim yüklenemedi: ${uploadError.message}`);
+    }
+
+    const { data: publicUrlData } = supabase.storage
+      .from("event-images")
+      .getPublicUrl(filePath);
+
+    finalImageUrl = publicUrlData.publicUrl;
+  }
 
   const { error } = await supabase
     .from("events")
-    .insert([{ title, event_date, type, description, image_url, status }]);
+    .insert([{ title, event_date, type, description, image_url: finalImageUrl, status }]);
 
   if (error) throw new Error(error.message);
   revalidatePath("/");            // anasayfayı yenile
