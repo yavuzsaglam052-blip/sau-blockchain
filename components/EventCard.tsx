@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import { Event } from "@/utils/supabase";
 
 function formatDate(dateStr: string) {
@@ -18,10 +18,12 @@ const TYPE_COLORS: Record<string, string> = {
 };
 
 export default function EventCard({ event }: { event: Event }) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const tagBg = TYPE_COLORS[event.type] ?? "rgba(99,102,241,0.2)";
 
   return (
-    <div
+    <>
+      <div
       style={{
         background: "rgba(15,23,42,0.6)",
         backdropFilter: "blur(16px)",
@@ -48,7 +50,11 @@ export default function EventCard({ event }: { event: Event }) {
     >
       {/* Fotoğraf alanı */}
       {event.image_url && (
-        <div className="group" style={{ height: "260px", overflow: "hidden", background: "#0f172a", position: "relative" }}>
+        <div 
+          className="group cursor-pointer" 
+          style={{ height: "200px", overflow: "hidden", background: "#0f172a", position: "relative" }}
+          onClick={() => setIsModalOpen(true)}
+        >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={event.image_url}
@@ -56,6 +62,15 @@ export default function EventCard({ event }: { event: Event }) {
             className="transition-transform duration-500 group-hover:scale-110 group-active:scale-110"
             style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.85 }}
           />
+          <div style={{
+            position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center",
+            background: "rgba(15,23,42,0.4)", opacity: 0, transition: "opacity 0.3s",
+          }} className="group-hover:opacity-100">
+             <span style={{
+               background: "rgba(255,255,255,0.2)", backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)",
+               padding: "8px 16px", borderRadius: "999px", color: "white", fontSize: "13px", fontWeight: 600,
+             }}>Büyüt 🔍</span>
+          </div>
         </div>
       )}
       {!event.image_url && (
@@ -95,5 +110,48 @@ export default function EventCard({ event }: { event: Event }) {
         </p>
       </div>
     </div>
+
+      {/* Lightbox / Modal */}
+      {isModalOpen && event.image_url && (
+        <div 
+          style={{
+            position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh", zIndex: 99999,
+            background: "rgba(9, 14, 26, 0.9)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
+            display: "flex", alignItems: "center", justifyContent: "center", padding: "20px",
+            animation: "fadeIn 0.2s ease-out forwards",
+          }}
+          onClick={() => setIsModalOpen(false)}
+        >
+          <div 
+            style={{ position: "relative", maxWidth: "90vw", maxHeight: "90vh" }}
+            onClick={(e) => e.stopPropagation()} // İçine tıklayınca kapanmasın
+          >
+             {/* eslint-disable-next-line @next/next/no-img-element */}
+             <img
+                src={event.image_url}
+                alt={event.title}
+                style={{
+                  maxWidth: "100%", maxHeight: "90vh", objectFit: "contain", borderRadius: "12px",
+                  boxShadow: "0 24px 80px rgba(0,0,0,0.8)", border: "1px solid rgba(255,255,255,0.1)",
+                }}
+             />
+             <button
+               onClick={() => setIsModalOpen(false)}
+               style={{
+                 position: "absolute", top: "-16px", right: "-16px", width: "40px", height: "40px", borderRadius: "50%",
+                 background: "rgba(15,23,42,0.8)", border: "1px solid rgba(255,255,255,0.2)", color: "white",
+                 display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", fontSize: "20px",
+                 boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
+               }}
+             >
+               ✕
+             </button>
+          </div>
+          <style dangerouslySetInnerHTML={{__html: `
+            @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+          `}} />
+        </div>
+      )}
+    </>
   );
 }
