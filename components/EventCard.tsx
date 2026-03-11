@@ -59,7 +59,7 @@ export default function EventCard({ event }: { event: Event }) {
             src={event.image_url}
             alt={event.title}
             className="transition-transform duration-500 group-hover:scale-105 group-active:scale-105"
-            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.95 }}
+            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.95 }}
           />
 
           {/* İTÜ Tarzı Hover İç Border Efekti */}
@@ -78,11 +78,17 @@ export default function EventCard({ event }: { event: Event }) {
       )}
       {!event.image_url && (
         <div style={{
-          display: "flex", alignItems: "center", justifyContent: "center",
+          position: "relative",
           background: "linear-gradient(135deg,rgba(99,102,241,0.08),rgba(167,139,250,0.05))",
-          fontSize: "2.5rem", aspectRatio: "4/3"
+          paddingTop: "75%"
         }}>
-          {event.type === "Workshop" ? "🔧" : event.type === "Hackathon" ? "⚡" : "📖"}
+          <div style={{
+            position: "absolute", top: 0, left: 0, width: "100%", height: "100%",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: "2.5rem"
+          }}>
+            {event.type === "Workshop" ? "🔧" : event.type === "Hackathon" ? "⚡" : "📖"}
+          </div>
         </div>
       )}
 
@@ -157,9 +163,12 @@ export default function EventCard({ event }: { event: Event }) {
               overflow: hidden;
               background: #0f172a;
               width: 100%;
-              aspect-ratio: 4 / 3; /* Daha derli toplu karemsi görünüm */
+              padding-top: 75%; /* Kusursuz kırılamaz 4:3 (w*0.75) oranı */
             }
             .event-img-container img {
+              position: absolute;
+              top: 0;
+              left: 0;
               width: 100%;
               height: 100%;
               object-fit: cover;
