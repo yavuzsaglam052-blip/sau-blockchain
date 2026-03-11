@@ -59,7 +59,7 @@ export default function EventCard({ event }: { event: Event }) {
             src={event.image_url}
             alt={event.title}
             className="transition-transform duration-500 group-hover:scale-105 group-active:scale-105"
-            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", opacity: 0.95 }}
+            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", opacity: 0.95 }}
           />
 
           {/* İTÜ Tarzı Hover İç Border Efekti */}
@@ -157,7 +157,7 @@ export default function EventCard({ event }: { event: Event }) {
               overflow: hidden;
               background: #0f172a;
               width: 100%;
-              aspect-ratio: 16 / 9;
+              padding-top: 56.25%; /* 16:9 Aspect Ratio */
             }
           `}} />
         </div>
