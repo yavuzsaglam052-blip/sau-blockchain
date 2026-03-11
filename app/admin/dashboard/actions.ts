@@ -18,3 +18,11 @@ export async function addEvent(formData: FormData) {
   revalidatePath("/");            // anasayfayı yenile
   revalidatePath("/admin/dashboard");
 }
+
+export async function deleteEvent(id: string) {
+  const { error } = await supabase.from("events").delete().eq("id", id);
+  if (error) throw new Error(error.message);
+
+  revalidatePath("/");
+  revalidatePath("/admin/dashboard");
+}
