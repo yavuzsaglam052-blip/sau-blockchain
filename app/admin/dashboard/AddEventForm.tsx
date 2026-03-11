@@ -87,7 +87,12 @@ export default function AddEventForm({ addEventAction }: { addEventAction: (form
       setImgSrc("");
       alert("✅ Etkinlik başarıyla eklendi! Resim kırpılıp yüklendi.");
     } catch (err: unknown) {
-      alert("❌ Hata: " + (err instanceof Error ? err.message : String(err)));
+      const errorMsg = err instanceof Error ? err.message : String(err);
+      if (errorMsg.includes("NEXT_REDIRECT")) {
+         // Next.js'in revalidate/redirect işlemleri "Error" olarak fırlatılır. Ancak bu gerçekte sorunsuzdur.
+         return; 
+      }
+      alert("❌ Hata: " + errorMsg);
     } finally {
       setIsSubmitting(false);
     }
