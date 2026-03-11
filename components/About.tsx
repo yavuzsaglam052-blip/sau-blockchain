@@ -73,7 +73,7 @@ const techCards = [
 
 export default function About() {
   return (
-    <section id="about" style={{ padding: "96px 24px" }}>
+    <section id="about" className="py-16 md:py-24 px-6">
       {/* Max-width centered container */}
       <div style={{ maxWidth: "1200px", margin: "0 auto", width: "100%" }}>
 
@@ -86,12 +86,7 @@ export default function About() {
         </div>
 
         {/* 2-column grid */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: "64px",
-          alignItems: "center",
-        }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
 
           {/* LEFT: Text content */}
           <div>
@@ -183,7 +178,7 @@ export default function About() {
               </div>
 
               {/* 2×2 grid */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {techCards.map((card) => (
                   <div
                     key={card.title}
