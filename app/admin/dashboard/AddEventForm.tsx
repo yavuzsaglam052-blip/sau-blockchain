@@ -80,8 +80,31 @@ export default function AddEventForm({ addEventAction }: { addEventAction: (form
     e.preventDefault();
     setIsSubmitting(true);
     const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    // Tarih vs Durum (Gelecek/Geçmiş) Kontrolü
+    const eventDateStr = formData.get("event_date") as string;
+    const status = formData.get("status") as string;
+    
+    if (eventDateStr) {
+      const selectedDate = new Date(eventDateStr);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Saatleri sıfırla ki sadece günü kıyaslayalım
+
+      if (status === "upcoming" && selectedDate < today) {
+        alert("❌ Hata: Geçmiş tarihli bir etkinliği 'Gelecek Etkinlik' olarak kaydedemezsiniz!");
+        setIsSubmitting(false);
+        return;
+      }
+      
+      if (status === "past" && selectedDate > today) {
+        alert("❌ Hata: Gelecek tarihli veya henüz bitmemiş bir etkinliği 'Geçmiş Etkinlik' olarak kaydedemezsiniz!");
+        setIsSubmitting(false);
+        return;
+      }
+    }
+
     try {
-      const formData = new FormData(form);
       await addEventAction(formData);
       form.reset();
       setFinalBase64("");
