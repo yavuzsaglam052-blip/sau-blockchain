@@ -52,6 +52,7 @@ export default function EventCard({ event }: { event: Event }) {
       {event.image_url && (
         <div 
           className="group cursor-pointer event-img-container" 
+          style={{ flex: "0 0 220px", minHeight: "220px", maxHeight: "220px" }}
           onClick={() => setIsModalOpen(true)}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -80,7 +81,7 @@ export default function EventCard({ event }: { event: Event }) {
         <div style={{
           display: "flex", alignItems: "center", justifyContent: "center",
           background: "linear-gradient(135deg,rgba(99,102,241,0.08),rgba(167,139,250,0.05))",
-          fontSize: "2.5rem", aspectRatio: "16 / 9"
+          fontSize: "2.5rem", flex: "0 0 220px", minHeight: "220px", maxHeight: "220px"
         }}>
           {event.type === "Workshop" ? "🔧" : event.type === "Hackathon" ? "⚡" : "📖"}
         </div>
