@@ -51,16 +51,15 @@ export default function EventCard({ event }: { event: Event }) {
       {/* Fotoğraf alanı */}
       {event.image_url && (
         <div 
-          className="group cursor-pointer" 
-          style={{ position: "relative", overflow: "hidden", background: "#0f172a" }}
+          className="group cursor-pointer event-img-container" 
           onClick={() => setIsModalOpen(true)}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={event.image_url}
             alt={event.title}
-            className="transition-transform duration-500 group-hover:scale-105 group-active:scale-105 event-img-h"
-            style={{ width: "100%", objectFit: "contain", backgroundColor: "rgba(15,23,42,0.6)", objectPosition: "center", opacity: 0.95 }}
+            className="transition-transform duration-500 group-hover:scale-105 group-active:scale-105"
+            style={{ width: "100%", height: "100%", objectFit: "contain", backgroundColor: "rgba(15,23,42,0.6)", objectPosition: "center", opacity: 0.95 }}
           />
 
           {/* İTÜ Tarzı Hover İç Border Efekti */}
@@ -153,9 +152,12 @@ export default function EventCard({ event }: { event: Event }) {
           </div>
           <style dangerouslySetInnerHTML={{__html: `
             @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-            .event-img-h { height: 260px; }
-            @media (max-width: 768px) {
-              .event-img-h { height: 220px; }
+            .event-img-container {
+              position: relative;
+              overflow: hidden;
+              background: #0f172a;
+              width: 100%;
+              height: 220px;
             }
           `}} />
         </div>
