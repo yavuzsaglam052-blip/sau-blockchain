@@ -79,10 +79,11 @@ export default function AddEventForm({ addEventAction }: { addEventAction: (form
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsSubmitting(true);
+    const form = e.currentTarget;
     try {
-      const formData = new FormData(e.currentTarget);
+      const formData = new FormData(form);
       await addEventAction(formData);
-      e.currentTarget.reset();
+      form.reset();
       setFinalBase64("");
       setImgSrc("");
       alert("✅ Etkinlik başarıyla eklendi! Resim kırpılıp yüklendi.");
