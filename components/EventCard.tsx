@@ -48,13 +48,13 @@ export default function EventCard({ event }: { event: Event }) {
     >
       {/* Fotoğraf alanı */}
       {event.image_url && (
-        <div className="group" style={{ height: "180px", overflow: "hidden", background: "#0f172a", position: "relative" }}>
+        <div className="group" style={{ height: "260px", overflow: "hidden", background: "#0f172a", position: "relative" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={event.image_url}
             alt={event.title}
             className="transition-transform duration-500 group-hover:scale-110 group-active:scale-110"
-            style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.85 }}
+            style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", opacity: 0.85 }}
           />
         </div>
       )}
