@@ -4,7 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: 'https://sau-blockchain.vercel.app',
-      lastModified: new Date(),
+      lastModified: new Date().toISOString(),
       changeFrequency: 'weekly',
       priority: 1, // Ana sayfanın Google'daki en önemli (ilk çıkacak) sayfa olduğunu belirtiyoruz
     },
