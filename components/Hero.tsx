@@ -38,7 +38,7 @@ export default function Hero() {
         position: "relative",
         zIndex: 10,
         width: "100%",
-        maxWidth: "800px",
+        maxWidth: "1000px",
         margin: "0 auto",
         textAlign: "center",
       }}>
@@ -69,22 +69,26 @@ export default function Hero() {
 
         {/* Headline */}
         <h1 style={{ fontWeight: 900, lineHeight: 1.15, letterSpacing: "-0.02em", marginBottom: "24px" }}>
-          <span style={{ display: "block", fontSize: "clamp(2.5rem, 7vw, 4.5rem)", color: "white" }}>Geleceği Birlikte</span>
+          <span style={{ display: "block", fontSize: "clamp(32px, 6vw, 76px)", color: "white" }}>Geleceği Birlikte</span>
           <span style={{
             display: "block",
-            fontSize: "clamp(2.5rem, 7vw, 4.5rem)",
+            fontSize: "clamp(20px, 4.5vw, 64px)",
             background: "linear-gradient(to right, #60a5fa, #a78bfa, #f472b6)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
+            whiteSpace: "nowrap",
+            paddingRight: "0.1em",
           }}>
             Merkeziyetsizleştiriyoruz
           </span>
         </h1>
 
         <p style={{
-          color: "#94a3b8",
-          fontSize: "clamp(15px, 2vw, 18px)",
+          color: "#e2e8f0",
+          fontSize: "clamp(16px, 2vw, 18px)",
+          fontWeight: 500,
+          textShadow: "0 2px 10px rgba(0,0,0,0.8)",
           maxWidth: "560px",
           margin: "0 auto 48px",
           lineHeight: 1.75,
