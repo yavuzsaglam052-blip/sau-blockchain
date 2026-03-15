@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Coins, Rocket, ShieldCheck, Zap } from "lucide-react";
 
 export default function SolanaPage() {
   return (
     <main className="min-h-screen pt-24 pb-16 px-6 relative" style={{ backgroundColor: "#0f172a" }}>
-      {/* Background elements */}
+      {/* Background glow */}
       <div style={{
         position: "absolute",
         top: "-100px",
@@ -41,6 +41,7 @@ export default function SolanaPage() {
           Geri Dön
         </Link>
 
+        {/* Hero Section */}
         <div style={{
           display: "flex",
           alignItems: "center",
@@ -63,39 +64,97 @@ export default function SolanaPage() {
           </div>
           <div>
             <h1 style={{ color: "white", fontSize: "40px", fontWeight: 800, margin: 0, lineHeight: 1.2 }}>Solana Ekosistemi</h1>
-            <p style={{ color: "#818cf8", fontSize: "16px", marginTop: "4px" }}>Yüksek Performanslı dApp Geliştirme</p>
+            <p style={{ color: "#818cf8", fontSize: "16px", marginTop: "4px" }}>Işık Hızında, Düşük Maliyetli Blockchain</p>
           </div>
         </div>
 
+        {/* Yeni Başlayanlar İçin Analoji */}
         <div style={{
-          background: "rgba(30,41,59,0.5)",
+          background: "linear-gradient(135deg, rgba(30,41,59,0.5), rgba(15,23,42,0.8))",
+          border: "1px solid rgba(148,163,184,0.1)",
+          borderLeft: "4px solid #6366f1",
+          borderRadius: "16px",
+          padding: "32px",
+          backdropFilter: "blur(12px)",
+          marginBottom: "40px",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+            <Zap color="#818cf8" size={24} />
+            <h2 style={{ color: "white", fontSize: "22px", fontWeight: 700, margin: 0 }}>
+              Kısaca: Solana Nedir?
+            </h2>
+          </div>
+          <p style={{ color: "#cbd5e1", fontSize: "16px", lineHeight: 1.8, margin: 0 }}>
+            Eğer eski nesil blockchain ağlarını (örn. Bitcoin veya ilk dönem Ethereum) "çevirmeli ağ (dial-up) internet" olarak düşünürseniz, 
+            <strong> Solana "fiber optik internet" gibidir.</strong> <br/><br/>
+            Amacı, tüm dünyadaki finansal sistemleri ve uygulamaları kaldırabilecek kadar hızlı (saniyede 65.000 işlem) ve 
+            herkesin kullanabileceği kadar ucuz (işlem başına 1 kuruştan az maliyet) bir altyapı sunmaktır.
+          </p>
+        </div>
+
+        {/* Neden Solana */}
+        <div style={{
+          background: "rgba(30,41,59,0.3)",
           border: "1px solid rgba(148,163,184,0.1)",
           borderRadius: "24px",
           padding: "40px",
-          backdropFilter: "blur(12px)",
+          marginBottom: "40px",
         }}>
-          <h2 style={{ color: "white", fontSize: "24px", fontWeight: 700, marginBottom: "20px" }}>Neden Solana?</h2>
-          <p style={{ color: "#cbd5e1", fontSize: "16px", lineHeight: 1.8, marginBottom: "32px" }}>
-            Solana, saniyede binlerce işlem (TPS) kapasitesi ve inanılmaz düşük işlem ücretleriyle Web3 dünyasının parlayan yıldızıdır. 
-            Okunması ve yazılması kolay Rust dili ve Anchor framework&apos;ü, geliştiriciler için güçlü bir temel oluşturur.
-          </p>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
+            <Rocket color="#a5b4fc" size={24} />
+            <h2 style={{ color: "white", fontSize: "24px", fontWeight: 700, margin: 0 }}>Neden Solana Öğrenmelisin?</h2>
+          </div>
+          
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "24px", marginTop: "24px" }}>
+            <div style={{ display: "flex", gap: "16px" }}>
+              <div style={{ marginTop: "4px" }}><Zap color="#6366f1" size={20} /></div>
+              <div>
+                <h4 style={{ color: "white", fontSize: "16px", fontWeight: 600, marginBottom: "8px", marginTop: 0 }}>Yüksek Hız</h4>
+                <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: 1.6, margin: 0 }}>Kullanıcılar bir düğmeye bastığında işlemin anında gerçekleşmesini isterler, dakikalarca beklemeyi değil.</p>
+              </div>
+            </div>
+            <div style={{ display: "flex", gap: "16px" }}>
+              <div style={{ marginTop: "4px" }}><Coins color="#6366f1" size={20} /></div>
+              <div>
+                <h4 style={{ color: "white", fontSize: "16px", fontWeight: 600, marginBottom: "8px", marginTop: 0 }}>Aşırı Düşük Ücretler</h4>
+                <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: 1.6, margin: 0 }}>Mikro ödemeler ve oyun içi eşya alım-satımı gibi işlemlerde kullanıcıdan 10$ komisyon kesemezsiniz. Solana bunu sente indirir.</p>
+              </div>
+            </div>
+            <div style={{ display: "flex", gap: "16px" }}>
+              <div style={{ marginTop: "4px" }}><ShieldCheck color="#6366f1" size={20} /></div>
+              <div>
+                <h4 style={{ color: "white", fontSize: "16px", fontWeight: 600, marginBottom: "8px", marginTop: 0 }}>Geleceğin Dili: Rust</h4>
+                <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: 1.6, margin: 0 }}>Solana, sistem programlama dili Rust ile yazılır. Rust öğrenmek, sadece blockchain değil, genel yazılım kariyerin için de büyük bir artıdır.</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-          <h3 style={{ color: "white", fontSize: "20px", fontWeight: 600, marginBottom: "16px" }}>Öğreneceğimiz Konular</h3>
+        {/* Konular */}
+        <div style={{
+          background: "linear-gradient(to right, rgba(99,102,241,0.05), rgba(167,139,250,0.05))",
+          border: "1px solid rgba(99,102,241,0.15)",
+          borderRadius: "24px",
+          padding: "40px",
+        }}>
+          <h3 style={{ color: "white", fontSize: "20px", fontWeight: 600, marginBottom: "20px" }}>Bu Alanda Neler Öğretiyoruz?</h3>
           <ul style={{ 
-            color: "#94a3b8", 
+            color: "#cbd5e1", 
             fontSize: "15px", 
             lineHeight: 1.8, 
             display: "grid", 
             gridTemplateColumns: "1fr 1fr", 
-            gap: "12px",
-            paddingLeft: "20px"
+            gap: "16px",
+            padding: 0,
+            listStyleType: "none",
+            margin: 0
           }}>
-            <li style={{ listStyleType: "circle" }}>Rust Programlama Dili Temelleri</li>
-            <li style={{ listStyleType: "circle" }}>Solana Program Mimarisi</li>
-            <li style={{ listStyleType: "circle" }}>Anchor Framework Kullanımı</li>
-            <li style={{ listStyleType: "circle" }}>Web3.js ile Frontend Entegrasyonu</li>
-            <li style={{ listStyleType: "circle" }}>Token Oluşturma (SPL Tokens)</li>
-            <li style={{ listStyleType: "circle" }}>Minting ve NFT Projeleri</li>
+            {["Rust Programlama Dili Temelleri", "Solana Program (Akıllı Kontrat) Mimarisi", "Anchor Framework Kullanımı", "Web3.js ile Frontend (Arayüz) Entegrasyonu", "Token Oluşturma (SPL Tokens)", "Minting ve NFT Projeleri Geliştirme"].map((item, i) => (
+              <li key={i} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#818cf8" }} />
+                {item}
+              </li>
+            ))}
           </ul>
         </div>
       </div>

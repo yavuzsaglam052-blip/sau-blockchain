@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Scroll, Code, Terminal, Gavel } from "lucide-react";
 
 export default function SmartContractsPage() {
   return (
@@ -41,6 +41,7 @@ export default function SmartContractsPage() {
           Geri Dön
         </Link>
 
+        {/* Hero Section */}
         <div style={{
           display: "flex",
           alignItems: "center",
@@ -63,39 +64,94 @@ export default function SmartContractsPage() {
           </div>
           <div>
             <h1 style={{ color: "white", fontSize: "40px", fontWeight: 800, margin: 0, lineHeight: 1.2 }}>Akıllı Kontratlar</h1>
-            <p style={{ color: "#c4b5fd", fontSize: "16px", marginTop: "4px" }}>Solidity, Rust ve Move ile Merkeziyetsiz Kodlama</p>
+            <p style={{ color: "#c4b5fd", fontSize: "16px", marginTop: "4px" }}>Kod İşlediği Sürece Kurallar Geçerlidir</p>
           </div>
         </div>
 
+        {/* Yeni Başlayanlar İçin Analoji */}
         <div style={{
-          background: "rgba(30,41,59,0.5)",
+          background: "linear-gradient(135deg, rgba(30,41,59,0.5), rgba(15,23,42,0.8))",
+          border: "1px solid rgba(148,163,184,0.1)",
+          borderLeft: "4px solid #a78bfa",
+          borderRadius: "16px",
+          padding: "32px",
+          backdropFilter: "blur(12px)",
+          marginBottom: "40px",
+        }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+            <Scroll color="#c4b5fd" size={24} />
+            <h2 style={{ color: "white", fontSize: "22px", fontWeight: 700, margin: 0 }}>
+              Kısaca: Akıllı Kontrat Nedir?
+            </h2>
+          </div>
+          <p style={{ color: "#cbd5e1", fontSize: "16px", lineHeight: 1.8, margin: 0 }}>
+            Akıllı kontratları (Smart Contracts) bir <strong>Otomat Makinesi (Vending Machine)</strong> gibi düşünebilirsiniz. <br/><br/>
+            Normalde bir ürün almak isterseniz bir satıcıya (aracıya) para verirsiniz, o da size ürünü verir. Satıcı size yalan söyleyebilir veya paranızı alıp ürünü vermeyebilir. 
+            Ancak otomat makinesine paranızı atıp "B3" tuşuna basarsanız (koşullar sağlanırsa), makinenin mekanizması suyu otomatik olarak aşağı düşürür. <br/><br/>
+            İşte akıllı kontratlar da böyledir: İçine yazılan kodlar (kurallar) ağ üzerinde barınır. "A kişisi B kişisine 100 coin gönderirse, dijital tapuyu A'ya geçir" kodu, şartlar sağlandığında <strong>otomatik ve hatasız olarak</strong> çalışır. Kasiyere, notere veya bankaya ihtiyaç yoktur.
+          </p>
+        </div>
+
+        {/* Neden Önemli */}
+        <div style={{
+          background: "rgba(30,41,59,0.3)",
           border: "1px solid rgba(148,163,184,0.1)",
           borderRadius: "24px",
           padding: "40px",
-          backdropFilter: "blur(12px)",
+          marginBottom: "40px",
         }}>
-          <h2 style={{ color: "white", fontSize: "24px", fontWeight: 700, marginBottom: "20px" }}>Kod İşlediği Sürece Kurallar Geçerlidir</h2>
+          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "20px" }}>
+            <Gavel color="#c4b5fd" size={24} />
+            <h2 style={{ color: "white", fontSize: "24px", fontWeight: 700, margin: 0 }}>Geleceğin Dijital Anlaşmaları</h2>
+          </div>
           <p style={{ color: "#cbd5e1", fontSize: "16px", lineHeight: 1.8, marginBottom: "32px" }}>
-            Akıllı kontratlar (Smart Contracts), blockchain ağlarında barındırılan ve önceden belirlenmiş koşullar karşılandığında 
-            otomatik olarak çalışan programlardır. Finanstan sağlığa kadar dijital anlaşmaları değiştirilemez (immutable) hale getirirler.
+            Bugün finans (DeFi), oyun sektörü, oylama sistemleri ve dijital kimlikler sadece kod parçacıkları üzerinden çalışabiliyor. 
+            Bu kod parçalarını yazan kişilere <strong>Web3 Geliştiricisi / Smart Contract Yazılımcısı</strong> diyoruz.
           </p>
+          
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "24px" }}>
+            <div style={{ display: "flex", gap: "16px" }}>
+              <div style={{ marginTop: "4px" }}><Code color="#8b5cf6" size={20} /></div>
+              <div>
+                <h4 style={{ color: "white", fontSize: "16px", fontWeight: 600, marginBottom: "8px", marginTop: 0 }}>Değiştirilemez (Immutable)</h4>
+                <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: 1.6, margin: 0 }}>Kontrat bir kez ağa yüklendiğinde kuralları kimse değiştiremez. Bu, %100 güven yaratır.</p>
+              </div>
+            </div>
+            <div style={{ display: "flex", gap: "16px" }}>
+              <div style={{ marginTop: "4px" }}><Terminal color="#8b5cf6" size={20} /></div>
+              <div>
+                <h4 style={{ color: "white", fontSize: "16px", fontWeight: 600, marginBottom: "8px", marginTop: 0 }}>Solidity ve Diğerleri</h4>
+                <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: 1.6, margin: 0 }}>Ethereum için Solidity, Solana ve Aptos için Rust/Move dilleri kullanılarak bu kontratlar yazılır.</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-          <h3 style={{ color: "white", fontSize: "20px", fontWeight: 600, marginBottom: "16px" }}>Öğreneceğimiz Konular</h3>
+        {/* Konular */}
+        <div style={{
+          background: "linear-gradient(to right, rgba(167,139,250,0.05), rgba(244,114,182,0.05))",
+          border: "1px solid rgba(167,139,250,0.15)",
+          borderRadius: "24px",
+          padding: "40px",
+        }}>
+          <h3 style={{ color: "white", fontSize: "20px", fontWeight: 600, marginBottom: "20px" }}>Bu Alanda Neler Öğretiyoruz?</h3>
           <ul style={{ 
-            color: "#94a3b8", 
+            color: "#cbd5e1", 
             fontSize: "15px", 
             lineHeight: 1.8, 
             display: "grid", 
             gridTemplateColumns: "1fr 1fr", 
-            gap: "12px",
-            paddingLeft: "20px"
+            gap: "16px",
+            padding: 0,
+            listStyleType: "none",
+            margin: 0
           }}>
-            <li style={{ listStyleType: "circle" }}>EVM (Ethereum Virtual Machine) Temelleri</li>
-            <li style={{ listStyleType: "circle" }}>Solidity Sözdizimi ve Veri Tipleri</li>
-            <li style={{ listStyleType: "circle" }}>Kontrat Optimizasyonu ve Gas Yönetimi</li>
-            <li style={{ listStyleType: "circle" }}>Hardhat ve Foundry Test Araçları</li>
-            <li style={{ listStyleType: "circle" }}>ERC-20 ve ERC-721 Standartları</li>
-            <li style={{ listStyleType: "circle" }}>Farklı Ağlarda Kontrat Yayınlama</li>
+            {["EVM (Ethereum Virtual Machine) Temelleri", "Solidity Sözdizimi ve Veri Tipleri", "Kontrat Optimizasyonu ve Gas (Ücret) Yönetimi", "Hardhat ve Foundry gibi Test Araçları", "ERC-20 (Token) ve ERC-721 (NFT) Standartları", "Farklı Ağlarda (Testnet/Mainnet) Kontrat Yayınlama"].map((item, i) => (
+              <li key={i} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#a78bfa" }} />
+                {item}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
