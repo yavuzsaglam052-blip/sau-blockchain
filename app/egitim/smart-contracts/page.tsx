@@ -1,7 +1,17 @@
-"use client";
+
+import { Metadata } from "next";
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, Scroll, Code, Terminal, Gavel } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Akıllı Kontrat Eğitimleri | SAÜ Blockchain",
+  description: "Solidity, Rust ve Move dilleri kullanarak, EVM uyumlu ağlarda güvenli ve optimize akıllı kontrat (smart contract) geliştirme eğitimleri.",
+  keywords: ["Akıllı Kontrat", "Smart Contract", "Solidity", "EVM", "Blockchain", "SAÜ Blockchain Akıllı Kontrat", "Sakarya Web3", "Web3 Geliştirici"],
+  alternates: {
+    canonical: "https://sau-blockchain.vercel.app/egitim/smart-contracts",
+  },
+};
 
 export default function SmartContractsPage() {
   return (
@@ -23,19 +33,15 @@ export default function SmartContractsPage() {
       <div className="max-w-4xl mx-auto relative z-10">
         <Link 
           href="/#ecosystem" 
+          className="text-slate-400 hover:text-white transition-colors duration-200"
           style={{
             display: "inline-flex",
             alignItems: "center",
             gap: "8px",
-            color: "#94a3b8",
-            textDecoration: "none",
             fontSize: "14px",
             fontWeight: 500,
             marginBottom: "32px",
-            transition: "color 0.2s"
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
         >
           <ArrowLeft size={16} />
           Geri Dön
@@ -87,8 +93,8 @@ export default function SmartContractsPage() {
           <p style={{ color: "#cbd5e1", fontSize: "16px", lineHeight: 1.8, margin: 0 }}>
             Akıllı kontratları (Smart Contracts) bir <strong>Otomat Makinesi (Vending Machine)</strong> gibi düşünebilirsiniz. <br/><br/>
             Normalde bir ürün almak isterseniz bir satıcıya (aracıya) para verirsiniz, o da size ürünü verir. Satıcı size yalan söyleyebilir veya paranızı alıp ürünü vermeyebilir. 
-            Ancak otomat makinesine paranızı atıp "B3" tuşuna basarsanız (koşullar sağlanırsa), makinenin mekanizması suyu otomatik olarak aşağı düşürür. <br/><br/>
-            İşte akıllı kontratlar da böyledir: İçine yazılan kodlar (kurallar) ağ üzerinde barınır. "A kişisi B kişisine 100 coin gönderirse, dijital tapuyu A'ya geçir" kodu, şartlar sağlandığında <strong>otomatik ve hatasız olarak</strong> çalışır. Kasiyere, notere veya bankaya ihtiyaç yoktur.
+            Ancak otomat makinesine paranızı atıp &quot;B3&quot; tuşuna basarsanız (koşullar sağlanırsa), makinenin mekanizması suyu otomatik olarak aşağı düşürür. <br/><br/>
+            İşte akıllı kontratlar da böyledir: İçine yazılan kodlar (kurallar) ağ üzerinde barınır. &quot;A kişisi B kişisine 100 coin gönderirse, dijital tapuyu A'ya geçir&quot; kodu, şartlar sağlandığında <strong>otomatik ve hatasız olarak</strong> çalışır. Kasiyere, notere veya bankaya ihtiyaç yoktur.
           </p>
         </div>
 

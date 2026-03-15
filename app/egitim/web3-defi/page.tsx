@@ -1,7 +1,17 @@
-"use client";
+
+import { Metadata } from "next";
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, Landmark, Percent, RefreshCw, BarChart } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Web3 & DeFi (Merkeziyetsiz Finans) | SAÜ Blockchain",
+  description: "Sakarya Üniversitesi Blockchain Topluluğu ile bankasız finansal sistem olan DeFi'yi (Merkeziyetsiz Finans) öğrenin. DEX, Yield Farming ve Swap entegrasyonları.",
+  keywords: ["Web3", "Web3 Nedir", "DeFi", "DeFi Eğitim", "Merkeziyetsiz Finans", "SAÜ Blockchain DeFi", "DEX", "Yield Farming"],
+  alternates: {
+    canonical: "https://sau-blockchain.vercel.app/egitim/web3-defi",
+  },
+};
 
 export default function Web3DefiPage() {
   return (
@@ -23,19 +33,15 @@ export default function Web3DefiPage() {
       <div className="max-w-4xl mx-auto relative z-10">
         <Link 
           href="/#ecosystem" 
+          className="text-slate-400 hover:text-white transition-colors duration-200"
           style={{
             display: "inline-flex",
             alignItems: "center",
             gap: "8px",
-            color: "#94a3b8",
-            textDecoration: "none",
             fontSize: "14px",
             fontWeight: 500,
             marginBottom: "32px",
-            transition: "color 0.2s"
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
         >
           <ArrowLeft size={16} />
           Geri Dön

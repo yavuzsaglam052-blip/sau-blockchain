@@ -1,7 +1,17 @@
-"use client";
+
+import { Metadata } from "next";
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, Image as ImageIcon, CheckCircle, Fingerprint, Codesandbox } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "NFT & Dijital Sanat | SAÜ Blockchain",
+  description: "Dijital sahiplik, Metaverse entegrasyonu, oyun içi varlıklar ve NFT (Non-Fungible Token) standartlarını SAÜ Blockchain ekibiyle 0'dan öğrenin.",
+  keywords: ["NFT", "NFT Nedir", "Dijital Sanat", "Metaverse", "Sakarya Web3", "ERC-721", "SAÜ Blockchain NFT"],
+  alternates: {
+    canonical: "https://sau-blockchain.vercel.app/egitim/nft-art",
+  },
+};
 
 export default function NFTArtPage() {
   return (
@@ -23,19 +33,15 @@ export default function NFTArtPage() {
       <div className="max-w-4xl mx-auto relative z-10">
         <Link 
           href="/#ecosystem" 
+          className="text-slate-400 hover:text-white transition-colors duration-200"
           style={{
             display: "inline-flex",
             alignItems: "center",
             gap: "8px",
-            color: "#94a3b8",
-            textDecoration: "none",
             fontSize: "14px",
             fontWeight: 500,
             marginBottom: "32px",
-            transition: "color 0.2s"
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
         >
           <ArrowLeft size={16} />
           Geri Dön
@@ -85,10 +91,10 @@ export default function NFTArtPage() {
             </h2>
           </div>
           <p style={{ color: "#cbd5e1", fontSize: "16px", lineHeight: 1.8, margin: 0 }}>
-            NFT (Non-Fungible Token), kabaca <strong>"Dijital Orijinallik Sertifikası"</strong> demektir. <br/><br/>
-            Mona Lisa tablosunun milyonlarca kopyası veya fotoğrafı vardır ama <em>gerçek</em> olanına sahip olan kişi sadece Paris'teki Louvre Müzesi'dir (ve bunun kanıtı vardır). 
-            İnternette de bir resmi kopyalayabilir/indirebilirsiniz, ancak NFT teknolojisi sayesinde o resmin (veya dosyanın) dijital dünyada <strong>asıl sahibinin kim olduğu</strong> blockchain'e kazınır.<br/><br/>
-            NFT'ler sadece maymun resimleri değildir; gelecekte ev tapuları, konser biletleri, üniversite diplomaları ve oyun içi kılıçlarınız tamamen NFT formatında olacaktır.
+            NFT (Non-Fungible Token), kabaca <strong>&quot;Dijital Orijinallik Sertifikası&quot;</strong> demektir. <br/><br/>
+            Mona Lisa tablosunun milyonlarca kopyası veya fotoğrafı vardır ama <em>gerçek</em> olanına sahip olan kişi sadece Paris&apos;teki Louvre Müzesi&apos;dir (ve bunun kanıtı vardır). 
+            İnternette de bir resmi kopyalayabilir/indirebilirsiniz, ancak NFT teknolojisi sayesinde o resmin (veya dosyanın) dijital dünyada <strong>asıl sahibinin kim olduğu</strong> blockchain&apos;e kazınır.<br/><br/>
+            NFT&apos;ler sadece maymun resimleri değildir; gelecekte ev tapuları, konser biletleri, üniversite diplomaları ve oyun içi kılıçlarınız tamamen NFT formatında olacaktır.
           </p>
         </div>
 
@@ -117,7 +123,7 @@ export default function NFTArtPage() {
               <div style={{ marginTop: "4px" }}><Codesandbox color="#ec4899" size={20} /></div>
               <div>
                 <h4 style={{ color: "white", fontSize: "16px", fontWeight: 600, marginBottom: "8px", marginTop: 0 }}>Eşsiz Standartlar (ERC-721)</h4>
-                <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: 1.6, margin: 0 }}>Sıradan tokenların hepsi birbirinin aynısıdır (1 BTC = 1 BTC), ancak her NFT'nin kodu, id'si ve özelliği tamamen eşsizdir.</p>
+                <p style={{ color: "#94a3b8", fontSize: "14px", lineHeight: 1.6, margin: 0 }}>Sıradan tokenların hepsi birbirinin aynısıdır (1 BTC = 1 BTC), ancak her NFT&apos;nin kodu, id&apos;si ve özelliği tamamen eşsizdir.</p>
               </div>
             </div>
           </div>

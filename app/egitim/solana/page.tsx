@@ -1,7 +1,17 @@
-"use client";
+
+import { Metadata } from "next";
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, Coins, Rocket, ShieldCheck, Zap } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Solana Ekosistemi | SAÜ Blockchain",
+  description: "Sakarya Üniversitesi Blockchain Topluluğu olarak Rust ve Anchor framework ile yüksek performanslı, düşük maliyetli Solana dApp geliştirme eğitimleri sunuyoruz.",
+  keywords: ["Solana", "Solana nedir", "Rust", "Anchor framework", "dApp", "Solana smart contract", "SAÜ Blockchain Solana", "Sakarya Web3"],
+  alternates: {
+    canonical: "https://sau-blockchain.vercel.app/egitim/solana",
+  },
+};
 
 export default function SolanaPage() {
   return (
@@ -23,19 +33,15 @@ export default function SolanaPage() {
       <div className="max-w-4xl mx-auto relative z-10">
         <Link 
           href="/#ecosystem" 
+          className="text-slate-400 hover:text-white transition-colors duration-200"
           style={{
             display: "inline-flex",
             alignItems: "center",
             gap: "8px",
-            color: "#94a3b8",
-            textDecoration: "none",
             fontSize: "14px",
             fontWeight: 500,
             marginBottom: "32px",
-            transition: "color 0.2s"
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
         >
           <ArrowLeft size={16} />
           Geri Dön
@@ -85,8 +91,8 @@ export default function SolanaPage() {
             </h2>
           </div>
           <p style={{ color: "#cbd5e1", fontSize: "16px", lineHeight: 1.8, margin: 0 }}>
-            Eğer eski nesil blockchain ağlarını (örn. Bitcoin veya ilk dönem Ethereum) "çevirmeli ağ (dial-up) internet" olarak düşünürseniz, 
-            <strong> Solana "fiber optik internet" gibidir.</strong> <br/><br/>
+            Eğer eski nesil blockchain ağlarını (örn. Bitcoin veya ilk dönem Ethereum) &quot;çevirmeli ağ (dial-up) internet&quot; olarak düşünürseniz, 
+            <strong> Solana &quot;fiber optik internet&quot; gibidir.</strong> <br/><br/>
             Amacı, tüm dünyadaki finansal sistemleri ve uygulamaları kaldırabilecek kadar hızlı (saniyede 65.000 işlem) ve 
             herkesin kullanabileceği kadar ucuz (işlem başına 1 kuruştan az maliyet) bir altyapı sunmaktır.
           </p>

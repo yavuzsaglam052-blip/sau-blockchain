@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Schema from "@/components/Schema";
 import "./globals.css";
 
 const inter = Inter({
@@ -15,8 +16,9 @@ export const metadata: Metadata = {
     template: "%s | SAÜ Blockchain",
   },
   description:
-    "Sakarya Üniversitesi (SAÜ) Blockchain Topluluğu. Web3, kripto, akıllı sözleşmeler ve merkeziyetsiz teknolojiler alanında proje, eğitim ve gelişim merkezi.",
+    "Sakarya Üniversitesi (SAÜ) Blockchain Topluluğu. Web3, kripto, akıllı sözleşmeler (smart contracts) ve merkeziyetsiz teknolojiler (DeFi, NFT, Solana) alanında proje geliştirme, eğitim ve araştırma merkezi. Block chain nedir öğrenmek için katılın.",
   keywords: [
+    // Brand & Variations
     "SAÜ Blockchain",
     "SAÜ Blockchain Topluluğu",
     "Sakarya Üniversitesi Blockchain",
@@ -24,32 +26,53 @@ export const metadata: Metadata = {
     "SAÜ Web3",
     "Sakarya Kripto",
     "Sau block",
+    "Sau blockchain",
+    "saü block chain",
+    "sakarya üniversitesi block chain",
+    "sakarya block",
+    // Core Topics
     "Blockchain",
+    "Block chain",
+    "Blockchain nedir",
+    "Block chain nedir",
     "Web3",
-    "Solana",
-    "Akıllı Sözleşme",
+    "Web3 nedir",
     "Kripto Para",
+    "Kripto",
+    // Technical Terms
+    "Solana",
+    "Solana ekosistemi",
+    "Akıllı Sözleşme",
+    "Akıllı Kontratlar",
+    "Smart Contract",
+    "DeFi",
+    "Merkeziyetsiz Finans",
+    "NFT",
+    "Dijital Sanat",
+    "Blockchain Güvenliği",
+    "Rust",
+    "Solidity",
     "Yazılım",
+    "Bootcamp",
   ],
-  authors: [{ name: "SAÜ Blockchain" }],
-  creator: "SAÜ Blockchain",
+  authors: [{ name: "SAÜ Blockchain Topluluğu" }],
+  creator: "SAÜ Blockchain Topluluğu",
   openGraph: {
-    title: "SAÜ Blockchain Topluluğu | Sakarya Üniversitesi",
+    title: "SAÜ Blockchain Topluluğu | Sakarya Web3 Merkezi",
     description:
-      "Sakarya Üniversitesi Blockchain Topluluğu — Geleceğin teknolojilerini (Web3, Kripto, Smart Contract) birlikte inşa ediyoruz.",
+      "Sakarya Üniversitesi Blockchain Topluluğu — Geleceğin teknolojilerini (Web3, Kripto, Smart Contract) birlikte inşa ediyoruz. Blockchain nedir öğrenmek ve ekosisteme katılmak için doğru yerdesiniz.",
     url: "https://sau-blockchain.vercel.app",
-    siteName: "SAÜ Blockchain Topluluğu",
+    siteName: "SAÜ Blockchain",
     locale: "tr_TR",
     type: "website",
-    /* Sitenin logusunu veya havalı bir kapağını OG image olarak ekleyebilirsin
     images: [
       {
-        url: "/logo.png", // public klasöründeki bir resim
+        url: "/logo.png",
         width: 800,
         height: 600,
+        alt: "SAÜ Blockchain Logo",
       },
     ],
-    */
   },
   robots: {
     index: true,
@@ -71,7 +94,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" className={inter.variable}>
-      <body className="antialiased">{children}</body>
+      <head>
+        <link rel="canonical" href="https://sau-blockchain.vercel.app" />
+      </head>
+      <body className="antialiased">
+        <Schema />
+        {children}
+      </body>
     </html>
   );
 }

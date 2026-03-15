@@ -1,7 +1,17 @@
-"use client";
+
+import { Metadata } from "next";
 import React from "react";
 import Link from "next/link";
 import { ArrowLeft, ShieldAlert, BugPlay, SearchCode, Lock } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Blockchain Güvenliği Eğitimleri | SAÜ Blockchain",
+  description: "Akıllı kontrat denetimi (Smart Contract Auditing), exploit analizi, Reentrancy zafiyetleri ve Bug Bounty programlarına hazırlık eğitimleri.",
+  keywords: ["Blockchain Güvenliği", "Smart Contract Audit", "Web3 Security", "Bug Bounty", "Reentrancy", "Sakarya Blokzincir Güvenliği", "SAÜ Blockchain"],
+  alternates: {
+    canonical: "https://sau-blockchain.vercel.app/egitim/security",
+  },
+};
 
 export default function SecurityPage() {
   return (
@@ -23,19 +33,15 @@ export default function SecurityPage() {
       <div className="max-w-4xl mx-auto relative z-10">
         <Link 
           href="/#ecosystem" 
+          className="text-slate-400 hover:text-white transition-colors duration-200"
           style={{
             display: "inline-flex",
             alignItems: "center",
             gap: "8px",
-            color: "#94a3b8",
-            textDecoration: "none",
             fontSize: "14px",
             fontWeight: 500,
             marginBottom: "32px",
-            transition: "color 0.2s"
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
         >
           <ArrowLeft size={16} />
           Geri Dön
@@ -86,7 +92,7 @@ export default function SecurityPage() {
           </div>
           <p style={{ color: "#cbd5e1", fontSize: "16px", lineHeight: 1.8, margin: 0 }}>
             Normal dünyada bankanız hacklenirse, banka bunu kendi sigortasından telafi edebilir ve sunucudaki o işlemi geriye alabilir (geri sarabilir). <br/><br/>
-            Ancak Blockchain dünyasında temel prensip, işlemlerin <strong>geriye döndürülemez</strong> (Immutable) olmasıdır. Eğer yazdığınız akıllı bir kontratta açık varsa, bir hacker 1 saniye içinde sözleşmedeki milyonlarca dolarlık varlığı kendine transfer edebilir. "Geri Al" butonu yoktur, polisi arayıp durduramazsınız. <br/><br/>
+            Ancak Blockchain dünyasında temel prensip, işlemlerin <strong>geriye döndürülemez</strong> (Immutable) olmasıdır. Eğer yazdığınız akıllı bir kontratta açık varsa, bir hacker 1 saniye içinde sözleşmedeki milyonlarca dolarlık varlığı kendine transfer edebilir. &quot;Geri Al&quot; butonu yoktur, polisi arayıp durduramazsınız. <br/><br/>
             İşte bu yüzden, kontratları yayınlamadan önce hackerlardan önce açık arayan <strong>Smart Contract Auditor (Denetçi)</strong> rolü, sektörün en çok aranan (ve en yüksek maaşlı) rollerinden biridir.
           </p>
         </div>

@@ -1,7 +1,17 @@
-"use client";
+
+import { Metadata } from "next";
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, PlayCircle, ExternalLink, BookOpen, Lightbulb, Blocks } from "lucide-react";
+import { ArrowLeft, PlayCircle, ExternalLink, Lightbulb, Blocks } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Web3 Eğitim Seminerleri & Bootcamp | SAÜ Blockchain",
+  description: "Sakarya Üniversitesi Blockchain Topluluğu Bootcamp, Hackathon hazırlık ve teknik Web3 atölyeleri. BTK Akademi işbirlikli ücretsiz blokzincir eğitimleri.",
+  keywords: ["Web3 Eğitim", "Blockchain Bootcamp", "BTK Akademi", "Sakarya Üniversitesi Etkinlik", "SAÜ Hackathon", "Yazılım Eğitimleri", "Sakarya Web3"],
+  alternates: {
+    canonical: "https://sau-blockchain.vercel.app/egitim/web3-egitimleri",
+  },
+};
 
 export default function EducationPage() {
   const btkCourses = [
@@ -41,19 +51,15 @@ export default function EducationPage() {
       <div className="max-w-4xl mx-auto relative z-10">
         <Link 
           href="/#ecosystem" 
+          className="text-slate-400 hover:text-white transition-colors duration-200"
           style={{
             display: "inline-flex",
             alignItems: "center",
             gap: "8px",
-            color: "#94a3b8",
-            textDecoration: "none",
             fontSize: "14px",
             fontWeight: 500,
             marginBottom: "32px",
-            transition: "color 0.2s"
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
-          onMouseLeave={(e) => (e.currentTarget.style.color = "#94a3b8")}
         >
           <ArrowLeft size={16} />
           Geri Dön
@@ -136,7 +142,7 @@ export default function EducationPage() {
           </div>
           <p style={{ color: "#cbd5e1", fontSize: "16px", lineHeight: 1.8, marginBottom: "32px" }}>
             SAÜ Blockchain olarak, üyelerimizin ekosisteme en hızlı ve etkili şekilde entegre olabilmesi için 
-            aktif öğrenme ve projelerle "yaparak öğrenme" metodunu benimsiyoruz.
+            aktif öğrenme ve projelerle &quot;yaparak öğrenme&quot; metodunu benimsiyoruz.
           </p>
 
           <div style={{ 
@@ -188,6 +194,7 @@ export default function EducationPage() {
                 href={course.link}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="hover:-translate-y-1 hover:border-amber-400/40 hover:bg-slate-800/80 transition-all duration-200"
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -197,17 +204,6 @@ export default function EducationPage() {
                   background: "rgba(15,23,42,0.6)",
                   border: "1px solid rgba(148,163,184,0.1)",
                   textDecoration: "none",
-                  transition: "all 0.2s"
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(251,191,36,0.4)";
-                  e.currentTarget.style.background = "rgba(30,41,59,0.8)";
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(148,163,184,0.1)";
-                  e.currentTarget.style.background = "rgba(15,23,42,0.6)";
-                  e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
                 <div>
