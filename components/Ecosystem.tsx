@@ -1,4 +1,5 @@
 "use client";
+import Link from 'next/link';
 
 const focusAreas = [
   {
@@ -8,6 +9,7 @@ const focusAreas = [
     accent: "rgba(99,102,241,0.15)",
     border: "rgba(99,102,241,0.25)",
     glow: "rgba(99,102,241,0.3)",
+    href: "/egitim/solana",
   },
   {
     emoji: "📝",
@@ -16,6 +18,7 @@ const focusAreas = [
     accent: "rgba(167,139,250,0.12)",
     border: "rgba(167,139,250,0.25)",
     glow: "rgba(167,139,250,0.3)",
+    href: "/egitim/smart-contracts",
   },
   {
     emoji: "🌐",
@@ -24,6 +27,7 @@ const focusAreas = [
     accent: "rgba(96,165,250,0.12)",
     border: "rgba(96,165,250,0.25)",
     glow: "rgba(96,165,250,0.3)",
+    href: "/egitim/web3-defi",
   },
   {
     emoji: "🎨",
@@ -32,6 +36,7 @@ const focusAreas = [
     accent: "rgba(244,114,182,0.12)",
     border: "rgba(244,114,182,0.25)",
     glow: "rgba(244,114,182,0.3)",
+    href: "/egitim/nft-art",
   },
   {
     emoji: "🔒",
@@ -40,6 +45,7 @@ const focusAreas = [
     accent: "rgba(52,211,153,0.1)",
     border: "rgba(52,211,153,0.2)",
     glow: "rgba(52,211,153,0.3)",
+    href: "/egitim/security",
   },
   {
     emoji: "🎓",
@@ -48,6 +54,7 @@ const focusAreas = [
     accent: "rgba(251,191,36,0.08)",
     border: "rgba(251,191,36,0.2)",
     glow: "rgba(251,191,36,0.3)",
+    href: "/egitim/web3-egitimleri",
   },
 ];
 
@@ -107,78 +114,80 @@ export default function Ecosystem() {
         {/* 3-column card grid */}
         <div className="eco-grid">
           {focusAreas.map((area) => (
-            <div
-              key={area.title}
-              style={{
-                padding: "28px 24px",
-                borderRadius: "20px",
-                background: area.accent,
-                border: `1px solid ${area.border}`,
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
-                transition: "all 0.3s",
-                cursor: "default",
-                position: "relative",
-                overflow: "hidden",
-              }}
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLDivElement;
-                el.style.transform = "translateY(-8px)";
-                el.style.boxShadow = `0 20px 60px ${area.glow}`;
-                el.style.borderColor = area.glow;
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLDivElement;
-                el.style.transform = "translateY(0)";
-                el.style.boxShadow = "none";
-                el.style.borderColor = area.border;
-              }}
-            >
-              {/* Subtle top-right glow */}
-              <div style={{
-                position: "absolute",
-                top: "-20px",
-                right: "-20px",
-                width: "80px",
-                height: "80px",
-                borderRadius: "50%",
-                background: area.glow,
-                filter: "blur(30px)",
-                opacity: 0.3,
-                pointerEvents: "none",
-              }} />
+            <Link href={area.href} key={area.title} style={{ textDecoration: 'none' }}>
+              <div
+                style={{
+                  padding: "28px 24px",
+                  borderRadius: "20px",
+                  background: area.accent,
+                  border: `1px solid ${area.border}`,
+                  backdropFilter: "blur(16px)",
+                  WebkitBackdropFilter: "blur(16px)",
+                  transition: "all 0.3s",
+                  cursor: "pointer",
+                  position: "relative",
+                  overflow: "hidden",
+                  height: "100%",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.transform = "translateY(-8px)";
+                  el.style.boxShadow = `0 20px 60px ${area.glow}`;
+                  el.style.borderColor = area.glow;
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.transform = "translateY(0)";
+                  el.style.boxShadow = "none";
+                  el.style.borderColor = area.border;
+                }}
+              >
+                {/* Subtle top-right glow */}
+                <div style={{
+                  position: "absolute",
+                  top: "-20px",
+                  right: "-20px",
+                  width: "80px",
+                  height: "80px",
+                  borderRadius: "50%",
+                  background: area.glow,
+                  filter: "blur(30px)",
+                  opacity: 0.3,
+                  pointerEvents: "none",
+                }} />
 
-              {/* Emoji icon */}
-              <div style={{
-                fontSize: "32px",
-                marginBottom: "16px",
-                display: "block",
-                lineHeight: 1,
-              }}>
-                {area.emoji}
+                {/* Emoji icon */}
+                <div style={{
+                  fontSize: "32px",
+                  marginBottom: "16px",
+                  display: "block",
+                  lineHeight: 1,
+                }}>
+                  {area.emoji}
+                </div>
+
+                {/* Title */}
+                <h3 style={{
+                  color: "white",
+                  fontWeight: 700,
+                  fontSize: "16px",
+                  marginBottom: "10px",
+                  lineHeight: 1.3,
+                }}>
+                  {area.title}
+                </h3>
+
+                {/* Description */}
+                <p style={{
+                  color: "#64748b",
+                  fontSize: "13px",
+                  lineHeight: 1.65,
+                  margin: 0,
+                }}>
+                  {area.desc}
+                </p>
               </div>
-
-              {/* Title */}
-              <h3 style={{
-                color: "white",
-                fontWeight: 700,
-                fontSize: "16px",
-                marginBottom: "10px",
-                lineHeight: 1.3,
-              }}>
-                {area.title}
-              </h3>
-
-              {/* Description */}
-              <p style={{
-                color: "#64748b",
-                fontSize: "13px",
-                lineHeight: 1.65,
-                margin: 0,
-              }}>
-                {area.desc}
-              </p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
